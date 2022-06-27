@@ -1,0 +1,59 @@
+tres= np.array([[[1,2,3],[-1,-2,-3]],[[4,5,6],[-4,-5,-6]]])
+print(tres)
+print(type(tres))
+print(tres.ndim)
+
+[[[ 1  2  3]
+  [ 1  2  3]]
+
+ [[ 4  5  6]
+  [-4 -5 -6]]]
+<class 'numpy.ndarray'>
+3
+
+
+ndim /e usa para ver las dimensiones de los array
+
+_______________________________
+
+ZEROS
+
+zeroarray=np.zeros(10)
+print(zeroarray)
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+
+
+zeroarray= zeroarray.astype(int)
+print(zeroarray)
+[0 0 0 0 0 0 0 0 0 0]
+
+funcion astype // tipo de datos en numpy
+
+onesArray= np.ones(10)
+print(onesArray)
+
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+
+suma de matrix
+
+matrix= np.array([[1,2,3],[4,5,6]])
+print(matrix)
+print(matrix+2)
+[[1 2 3]
+ [4 5 6]]
+incrmentode la matrix en dos por cada valor
+[[3 4 5]
+ [6 7 8]]
+
+DECREMENYOO EN 2(-2)
+print(matrix-2)
+[[-1  0  1]
+ [ 2  3  4]]
+
+DICIDE POR 2
+print(matrix/2)
+
+ELVADO A LA 2
+print(matrix**2)
+[[ 1  4  9]
+ [16 25 36]]
