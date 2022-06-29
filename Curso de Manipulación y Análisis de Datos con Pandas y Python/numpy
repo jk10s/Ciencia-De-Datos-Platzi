@@ -57,3 +57,18 @@ ELVADO A LA 2
 print(matrix**2)
 [[ 1  4  9]
  [16 25 36]]
+ 
+ SUMAR DOS MATRIX
+ print(matrix11 + matrix22)
+ 
+ ESTAR DO MATRICES
+ print(matrix11 - matrix22)
+ 
+ PROMEDIO
+ np.mean(minimo)
+ 
+ DESVIACION STANDAR DE LOS ARRAYS
+ STD = Standard Deviation
+ 
+ np.std(minimo)
+ 
