@@ -1,0 +1,44 @@
+Series
+pd.__verion__
+pd.Series(diccionario) /// convertir un diccionario nomrla en series
+pd.DataFrame
+pd.DataFrame(diconario, index=['var']) ///realiza el indice con nombres que asignemos
+pd.columns
+pd.values
+varible.loc[''] filtros por noombre
+varible.iloc[] ///filtros con indices y trae registro
+varible.query(edad>12)
+
+crear archivos 
+direc_pandas='jk10s/{}' // creamo seldirecctorio donde lo vamos aguradar 
+dir_pandas='jk10s/{}'.format('test.csv')  crecacion del archivo
+pd.read_excel(direc_pandas.format('archivo.xlsx')) // lectura del aarchivo en jupyter
+pd.read_excel(direc_pandas.format('archivo.xlsx')) creacion de archivo jason
+pd.read_json(direc_pandas.format('archivo.json')) // lectura del archivo .json
+df_name.to_pickle(direc_pandas.format('t.pkl')) creacion delalrchivo pika el recomendable para trabajar
+df_name.to_hdf(direc_pandas.format('t.hdf'), key='data',format='table')
+df_name.to_csv(dir_pandas)
+
+
+df.nunique() /// para saber la variedad de los datos
+df_nmae.dtypes ////saber el tipo de variable
+vaaribledtypes /// varibles del datframe
+
+varible.tail(2)  /// juestra las filas que proporsione 
+varible.sample(10) // proporsiona las filas (eneste caso 10)
+m.convert_dtypes().dtypes
+m[['fall','nametype']]=m[['fall','nametype']].astype('category') conveirte en catergory
+pd.get_dummies(m['fall']) convierte en dummles
+
+pd.to_datetime(
+m['year'],
+     errors = 'coerce',
+     format = '%m/%d/%Y %H:%M:%S %p'
+)
+
+las conveirte en datatime con esos parametros
+
+m.rename(columns={'mass (g)':'masss'},inplace=True) renombre el nombre de la coluna
+
+list(vaariable)  /// lsta los nombres del dataframe
+
