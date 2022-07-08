@@ -7,3 +7,18 @@ diseña para el analisis de datos
 version 1.0
 
 como funciona la indexacion 
+
+TIPO DE FORMATOS PARA BIG DATA
+ json
+ csv
+ xlsx
+ parquet
+ hdf
+ 
+ carga de ocuma de memoria
+ primero json luego csv por que no son binario
+ son formatos de texto
+ 
+ hdf ultimo entre losbinarios
+  es recoomendable trbajar con piko
+  
