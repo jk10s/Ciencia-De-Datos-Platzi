@@ -7,7 +7,11 @@ pd.columns
 pd.values
 varible.loc[''] filtros por noombre
 varible.iloc[] ///filtros con indices y trae registro
-varible.query(edad>12)
+varible.query(edad>12) // consultas con condiciones
+
+pagina web bases de datos 
+https://www.kaggle.com/
+
 
 crear archivos 
 direc_pandas='jk10s/{}' // creamo seldirecctorio donde lo vamos aguradar 
@@ -20,6 +24,9 @@ df_name.to_hdf(direc_pandas.format('t.hdf'), key='data',format='table')
 df_name.to_csv(dir_pandas)
 
 
+
+
+
 df.nunique() /// para saber la variedad de los datos
 df_nmae.dtypes ////saber el tipo de variable
 vaaribledtypes /// varibles del datframe
@@ -27,7 +34,10 @@ vaaribledtypes /// varibles del datframe
 varible.tail(2)  /// juestra las filas que proporsione 
 varible.sample(10) // proporsiona las filas (eneste caso 10)
 m.convert_dtypes().dtypes
+
+CONVIERTE EN VARIABLES CATEGORICAS
 m[['fall','nametype']]=m[['fall','nametype']].astype('category') conveirte en catergory
+CONVERTIR EN VARIABLES DUMIS
 pd.get_dummies(m['fall']) convierte en dummles
 
 pd.to_datetime(
@@ -42,3 +52,35 @@ m.rename(columns={'mass (g)':'masss'},inplace=True) renombre el nombre de la col
 
 list(vaariable)  /// lsta los nombres del dataframe
 
+m.head(5) // muestra las primeros cinco elementos
+m.tail(10) /// ultimo s 5 registros
+m.sample(5) /// los 5 registros aleatorios
+m.shape //ver el numero de filas y  columnas
+m.size /// total de regitro filas x columnas
+m.describe() // datos estadisticos con porcentajes
+m.describe(include='all') // detalles de todos los datoas
+m.info() // saber cual es a categoria de las varibles
+
+ELIMINAR
+m.drop(['ones'], axis=1, inplaceTrue) ///  #codigo para eliminar a columna ones el axis o para indice y 1 para columna
+m.drop([0,2,4,6]) /// #eliminar filas por indices
+m.drop(columns=['id','recclass'],index=[1,2,3,4]).head(6) // #eliminar filas y columnas alvez
+COPIAR 
+df_ = m.copy(deep=True) // #hacer coopi profunda
+
+
+avanzados 
+lo['hour']=lo['timestamp'].dt.hour /7#crea un nueva columna de nombre hour 
+df = lo.iloc[:,1:] //  
+df['wind_speed']*2 /// multiplica  por dos una columna
+
+df_po['year']= pd.Categorical(df_po['year'].apply(str)) /// convierte el tipo de dato year a category
+idc_filtro=df_po['Country'].isin(['Aruba','Colombia']) // filtro de paisespor aruba y colombia
+df_sample=df_po[idc_filtro] // aplicando el anterior codigo fltro 
+df_sample.set_index(['Country','year']).sort_index() /// mismo anterior pero ordenado
+
+FUNCION ISIN /// crea un vector varibles  boleanas
+
+pob.isna().sum() /// suma de cadacoumna de los null
+df_books.loc[0:4, ['Name','Author']] //// los primeros cuatro registros con la columna name and Author
+df_books.loc[:, ['Reviews']] * -1 // convertir un acolumna el negativos
