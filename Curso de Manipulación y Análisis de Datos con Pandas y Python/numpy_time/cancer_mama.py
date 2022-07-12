@@ -100,3 +100,42 @@ fecha_ejecucion.strftime("%A")
 
 fecha_ejecucion.date() + datetime.timedelta(days=10)
 str(fecha_ejecucion.date() + datetime.timedelta(days=-2))
+
+pd.to_datetime("05/15/2020")
+pd.to_datetime("2020-05-15")
+pd.to_datetime("20200515")
+pd.to_datetime("20201205")
+pd.to_datetime("20201205", format="%Y%d%m")
+
+#ejercico de germany
+
+energy= pd.read_csv("germani.csv")
+energy.dtypes
+type(energy.iloc[0,0])
+energy.index = energy["Date"]
+type(energy.index[0])
+energy.drop("Date",axis=1, inplace=True)
+
+energy = energy.loc["2014":]
+energy = energy.loc["2014-06":]
+#fltrado deindices por scling
+energy = energy.loc["2014-06":"2017-06"]
+#devolver el index redefine e indice
+energy.reset_index(inplace=True)
+#condicional con string
+energy = energy[energy["Date"] > "2015"]
+
+#conveirte la columna date en tipo datetime
+energy["Date"] = pd.to_datetime(energy["Date"] )
+energy.dtypes
+energy.plot(x="Date")
+energy["year"] = energy["Date"].dt.year
+energy["dia"] = energy["Date"].dt.day
+energy["dayofwwek"] = energy["Date"].dt.dayofweek
+energy["dayofwwek_name"] = energy["Date"].dt.strftime("%A")
+energy.columns
+energy = energy.drop(["year","dia","dayofwwek","dayofwwek_name"], axis=1)
+
+#resamplo funcion
+m_energy = energy.resample("M",on="Date").sum()
+m_energy.plot()
