@@ -139,3 +139,77 @@ energy = energy.drop(["year","dia","dayofwwek","dayofwwek_name"], axis=1)
 #resamplo funcion
 m_energy = energy.resample("M",on="Date").sum()
 m_energy.plot()
+
+historic = pd.read_csv("OnlineRetail.csv", encoding=("latin1"))
+historic.info()
+historic.size
+historic.isna().sum()
+sample = historic.sample(500)
+historic.describe()
+historic.columns
+historic["InvoiceDate"] = pd.to_datetime(historic["InvoiceDate"])
+sample = historic.sample(500)
+historic.dtypes
+#aca toda el string de los primeros 7 caracteres de cada registro
+ano_mes= lambda x: x[0:7]
+#astype cambia el tipo de dato de la columna
+historic["Fecha_mes"] = historic["InvoiceDate"].astype(str).map(ano_mes)
+
+historic["ventas"] = historic["Quantity"]* historic["UnitPrice"]
+sample = historic.sample(500)
+historic = historic[historic["ventas"]>0]
+sample = historic.sample(500)
+#cual es mmonto de historico de ventas por mes
+ventas_nesulaes =  historic.groupby(["Fecha_mes"],as_index=False).agg({"ventas":"sum"})
+ventas_nesulaes.plot(x="Fecha_mes")
+
+#cual es el monto de ventas de es por pais
+ventas_nesulaes_pais =  historic.groupby(["Fecha_mes","Country"],as_index=False).agg({"ventas":"sum"})
+#cual es el numero de orden histroico por pais
+conteo_fecha_pais = historic.groupby(["Fecha_mes","Country"],as_index=False).agg({"InvoiceNo":"nunique"})
+#pivoteo cambiar lal estructura de filas a columnas
+ventas_prosucto= historic.pivot_table(index="StockCode",columns=["Fecha_mes"],values="ventas",aggfunc="sum",fill_value=0)
+ordenes_mensuales_pivot = conteo_fecha_pais.pivot_table(index = "Fecha_mes",columns="Country",values="InvoiceNo",aggfunc="sum")
+
+
+#dicir el archivo en arios para que suproceso sea as rapido(para grnades cantidades de info)
+import pandas as pd
+import glob
+import numpy as np
+#cpncien
+archivo_original= pd.read_csv("winemag.csv")
+partes = np.array_split(archivo_original, 10)
+#for ix def in enumerate(partes):
+#    df.to_csv()
+series_tiempo = pd.read_excel("venta_productos.xlsx")
+# despivotear melt
+valores=[col for col in  series_tiempo if col != "Producto"]
+base_despivoteada= pd.melt(series_tiempo, id_vars=["Producto"], value_vars=valores,value_name="pezas", var_name="aniomes")
+
+import sqlite3
+import psycopg2
+cone_bd = sqlite3.connect("festi.db")
+festivos = pd.read_sql("SELECT * FROM holidays", cone_bd)
+
+import pandas as pd
+import sqlite3
+import psycopg2
+
+#Sqlite
+con_sqlite = sqlite3.connect("festivos_colombia.db")
+festivos = pd.read_sql("SELECT * FROM holidays", con_sqlite)
+festivos = pd.read_sql("SELECT * FROM holidays", con_sqlite, parse_dates = "date")
+
+query= """SELECT 'date', 'localName', 'countryCode'
+        FROM holidays LIMIT 20"""
+
+festivos = pd.read_sql(query, con_sqlite, parse_dates = "date")
+
+#Postgres
+con_string_pos =  " host = 'localhost' dbname = 'postgres' user = 'postgres' password = 'admin1234' "
+
+con_pos = psycopg2.connect(con_string_pos)
+
+
+holidays_postgres = pd.read_sql(query, con_pos)
+
