@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jul 10 13:06:08 2022
+
+@author: jk10s
+"""
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+matriz = np.array([[1,2],[3,4]])
+matriz.sum()
+matriz.mean()
+matriz.std()
+matriz**2
+inversa = np.linalg.inv(matriz)
+np.dot(matriz,inversa)
+
+x= np.arange(-2,2,0.1)
+y = np.array([np.sin(valor * (180/np.pi)) for valor in x])
+
+plt.plot(x,y)
