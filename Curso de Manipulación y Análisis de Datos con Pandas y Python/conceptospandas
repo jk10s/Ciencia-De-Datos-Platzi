@@ -6,6 +6,7 @@ pd.DataFrame(diconario, index=['var']) ///realiza el indice con nombres que asig
 pd.columns
 pd.values
 varible.loc[''] filtros por noombre
+          ILOC     // acedes a los alrores atravez delas posiciones
 varible.iloc[] ///filtros con indices y trae registro
 varible.query(edad>12) // consultas con condiciones
 
@@ -32,7 +33,7 @@ df_nmae.dtypes ////saber el tipo de variable
 vaaribledtypes /// varibles del datframe
 
 varible.tail(2)  /// juestra las filas que proporsione 
-varible.sample(10) // proporsiona las filas (eneste caso 10)
+varible.sample(10) // proporsiona las filas  aleatorias (eneste caso 10)
 m.convert_dtypes().dtypes
 
 CONVIERTE EN VARIABLES CATEGORICAS
@@ -54,6 +55,8 @@ list(vaariable)  /// lsta los nombres del dataframe
 
 m.head(5) // muestra las primeros cinco elementos
 m.tail(10) /// ultimo s 5 registros
+list(m.columns) /// devuelve una lista con los nombres de las columnas
+m.index /// min index and max index for step (1) by general
 m.sample(5) /// los 5 registros aleatorios
 m.shape //ver el numero de filas y  columnas
 m.size /// total de regitro filas x columnas
@@ -62,13 +65,13 @@ m.describe(include='all') // detalles de todos los datoas
 m.info() // saber cual es a categoria de las varibles
 
 ELIMINAR
-m.drop(['ones'], axis=1, inplaceTrue) ///  #codigo para eliminar a columna ones el axis o para indice y 1 para columna
+m.drop(['ones'], axis=1, inplace=True) ///  #codigo para eliminar a columna ones el axis o para indice y 1 para columna
 m.drop([0,2,4,6]) /// #eliminar filas por indices
 m.drop(columns=['id','recclass'],index=[1,2,3,4]).head(6) // #eliminar filas y columnas alvez
 COPIAR 
 df_ = m.copy(deep=True) // #hacer coopi profunda
 
-
+si se filtra una sola columna por ejemplo m['nombre_de_una_columna'] se obtendra una series si sonnmasde dos  son dataframe
 avanzados 
 lo['hour']=lo['timestamp'].dt.hour /7#crea un nueva columna de nombre hour 
 df = lo.iloc[:,1:] //  
