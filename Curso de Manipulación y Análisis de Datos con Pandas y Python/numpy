@@ -72,3 +72,32 @@ print(matrix**2)
  
  np.std(minimo)
  
+ ARANGE //
+ cre un arreglo con los parametros insertados de inio y final
+ arre=np.arange(12,20)
+print(arre)
+[12 13 14 15 16 17 18 19]
+
+print(arre[2:5])
+
+[14 15 16 17]
+
+FULL
+//devuelve un arrreglo con la entra introducida pr parametros
+prefillarray= np.full(10,0)
+print(prefillarray)
+[0 0 0 0 0 0 0 0 0 0]  
+
+
+AGREGAR UN NIEVO EJE newaxis
+
+newaxis
+#Puede usar np.newaxispara agregar un nuevo eje:
+a2 = a[np.newaxis, :]
+a2.shape
+(1, 6)
+
+empty(shape, dtype=float, order='C')
+
+
+ 
