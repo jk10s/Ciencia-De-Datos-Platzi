@@ -5,7 +5,7 @@ pd.DataFrame
 pd.DataFrame(diconario, index=['var']) ///realiza el indice con nombres que asignemos
 pd.columns
 pd.values
-varible.loc[''] filtros por noombre
+varible.loc[''] filtros por noombre primero la fila y luego la column[f,c]
           ILOC     // acedes a los alrores atravez delas posiciones
 varible.iloc[] ///filtros con indices y trae registro
 varible.query(edad>12) // consultas con condiciones
@@ -14,19 +14,26 @@ pagina web bases de datos
 https://www.kaggle.com/
 
 
-crear archivos 
-direc_pandas='jk10s/{}' // creamo seldirecctorio donde lo vamos aguradar 
-dir_pandas='jk10s/{}'.format('test.csv')  crecacion del archivo
+leer archivos 
+
 pd.read_excel(direc_pandas.format('archivo.xlsx')) // lectura del aarchivo en jupyter
 pd.read_excel(direc_pandas.format('archivo.xlsx')) creacion de archivo jason
 pd.read_json(direc_pandas.format('archivo.json')) // lectura del archivo .json
+
+guradadr archivos
+direc_pandas='jk10s/{}' // creamo seldirecctorio donde lo vamos aguradar 
+dir_pandas='jk10s/{}'.format('test.csv')  crecacion del archivo
 df_name.to_pickle(direc_pandas.format('t.pkl')) creacion delalrchivo pika el recomendable para trabajar
 df_name.to_hdf(direc_pandas.format('t.hdf'), key='data',format='table')
 df_name.to_csv(dir_pandas)
 
+IMPLACE // los datos que re hagan van a quedar gurdados automaticamnete
 
+el tipo de archivo hdf es optimo para trabajar en bigdata
+otro optimo es el paquet
 
-
+astype //convertit tipos de datos en los dataframes
+df_meteories[['fall', 'nametype']].astype('category')
 
 df.nunique() /// para saber la variedad de los datos
 df_nmae.dtypes ////saber el tipo de variable
@@ -39,7 +46,7 @@ m.convert_dtypes().dtypes
 CONVIERTE EN VARIABLES CATEGORICAS
 m[['fall','nametype']]=m[['fall','nametype']].astype('category') conveirte en catergory
 CONVERTIR EN VARIABLES DUMIS
-pd.get_dummies(m['fall']) convierte en dummles
+pd.get_dummies(m['fall']) convierte aribles categoricas a  dummles a ceros y unos de texto a numm
 
 pd.to_datetime(
 m['year'],
@@ -63,6 +70,7 @@ m.size /// total de regitro filas x columnas
 m.describe() // datos estadisticos con porcentajes
 m.describe(include='all') // detalles de todos los datoas
 m.info() // saber cual es a categoria de las varibles
+m.convert_dtypes(.dtypes // conveirte los tipos de datos po rej objet a string que perimte agilizar  el procesmeinto de los datos 
 
 ELIMINAR
 m.drop(['ones'], axis=1, inplace=True) ///  #codigo para eliminar a columna ones el axis o para indice y 1 para columna
@@ -78,7 +86,7 @@ df = lo.iloc[:,1:] //
 df['wind_speed']*2 /// multiplica  por dos una columna
 
 df_po['year']= pd.Categorical(df_po['year'].apply(str)) /// convierte el tipo de dato year a category
-idc_filtro=df_po['Country'].isin(['Aruba','Colombia']) // filtro de paisespor aruba y colombia
+idc_filtro=df_po['Country'].isin(['Aruba','Colombia']) // filtro de paisespor aruba y colombia los convierte boolean
 df_sample=df_po[idc_filtro] // aplicando el anterior codigo fltro 
 df_sample.set_index(['Country','year']).sort_index() /// mismo anterior pero ordenado
 
@@ -87,3 +95,14 @@ FUNCION ISIN /// crea un vector varibles  boleanas
 pob.isna().sum() /// suma de cadacoumna de los null
 df_books.loc[0:4, ['Name','Author']] //// los primeros cuatro registros con la columna name and Author
 df_books.loc[:, ['Reviews']] * -1 // convertir un acolumna el negativos
+
+CATEGORICAL
+pd.Categorical(dfp['year'].apply(str))	 // Conveirte a tipo de arible categorica 
+
+UNSTACK
+df_sample.unstack('Country') // cambiaar donde staban la c colunas ahora son la filas y donde esta flas ilas hoara las columnas
+
+IndexSlice
+ids = pd.IndexSlice /// permite hacer slice con valores STRING eje aruba austria 
+df_countries.loc[ids['Aruba':'Austria','2015':'2017'],:].sort_index()
+
