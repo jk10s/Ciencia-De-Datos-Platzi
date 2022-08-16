@@ -27,7 +27,7 @@ df_name.to_pickle(direc_pandas.format('t.pkl')) creacion delalrchivo pika el rec
 df_name.to_hdf(direc_pandas.format('t.hdf'), key='data',format='table')
 df_name.to_csv(dir_pandas)
 
-IMPLACE // los datos que re hagan van a quedar gurdados automaticamnete
+IMPLACE // los datos que re-hagan van a quedar gurdados automaticamnete
 
 el tipo de archivo hdf es optimo para trabajar en bigdata
 otro optimo es el paquet
@@ -53,8 +53,9 @@ m['year'],
      errors = 'coerce',
      format = '%m/%d/%Y %H:%M:%S %p'
 )
-
 las conveirte en datatime con esos parametros
+df['ObservationDate']= pd.to_datetime(df['ObservationDate']) // convierte a datime sin parametros
+
 
 m.rename(columns={'mass (g)':'masss'},inplace=True) renombre el nombre de la coluna
 
@@ -106,3 +107,48 @@ IndexSlice
 ids = pd.IndexSlice /// permite hacer slice con valores STRING eje aruba austria 
 df_countries.loc[ids['Aruba':'Austria','2015':'2017'],:].sort_index()
 
+
+GROUPBY
+df_time = jk.groupby(['ObservationDate']).sum() //agrupa por observ... sacando el  promedio
+
+dataframe.diif()  //resta cada dia con el dia previo es decir como aumentan los casos dia a dia
+df_time.diff().mean() //#promedio de casos durante un esos tres meses por dia
+df_time.head(1).to_dict() /// se sacaa un diconario (1° registro) para usar su estructura en la siguinete celda
+FILLNA 
+//llena los valores nan por el que quiera signarse
+fillna //#fillna para uitar los nan qu estaban en la priera fila
+df_diff.resample('M').sum() // #suma de mes
+df_diff.resample('W-sun').sum() // #cada domingo
+datatime.bfill //copea el valor siguinete donde estaba el valor nulo
+datafrma.interpolate()
+GROUPER // sus parametrosson key=column_a_agrupar freq=frecuecia
+
+df_cum.groupby(pd.Grouper(key='ObservationDate', freq = 'M'))[['rate']].mean() //#goupperconpara series de tiempo el timepo no pertence al indice #se saca el promdio por mes de la tasa de supervivencia por mes
+
+RESET index 
+df_cum = df_cum.reset_index() 
+
+PLOT
+varible.legend // para nombrar los ejes de la grafica
+
+...KIND
+kind=bar // grafico de barras
+kind=pie // grafico de pastel circular
+bar' or 'barh' for bar plots.
+'hist' for histogram.
+'box' for boxplot.
+'kde' or 'density' for density plots.
+'area' for area plots.
+'scatter' for scatter plots.
+'hexbin' for hexagonal bin plots.
+'pie' for pie plots.
+...stacked = True se sobrepone todas la barrras
+...figsize = (10,7) definir el tamaño del grafico
+...binds= ni idea
+
+PIVOT
+pivotea la tabla cambia las columnas en filas y filas en columnas
+exites varios apramtros de la funcion pivot
+...values // los valores que se obtendran del dataframe
+...index // donde va a quedar la filas
+...columnas //donde va a quedar las columnas
